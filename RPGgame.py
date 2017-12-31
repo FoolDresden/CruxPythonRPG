@@ -18,10 +18,10 @@ class Character:
 
 class Hero(Character):
 
-    def __init__(self):
-        dmg = 10
-        health = 30
-        name = "Hero"
+    def __init__(self, dmg=10, health=30, name="Hero"):
+        #dmg = 10
+        #health = 30
+        #name = "Hero"
         super().__init__(dmg, health, name)
         self.MAX_HEALTH = 50
 
@@ -41,44 +41,47 @@ class Hero(Character):
 
 class Goblin(Character):
 
-    def __init__(self):
-        dmg = 5
-        health = 10
-        name = "Goblin"
+    def __init__(self, dmg=5, health=10, name="Goblin"):
+        #dmg = 5
+        #health = 10
+        #name = "Goblin"
         super().__init__(dmg, health, name)
 
 
 class Orc(Character):
 
-    def __init__(self):
-        dmg = 10
-        health = 20
-        name = "Orc"
+    def __init__(self, dmg=10, health=20, name="Orc"):
+        #dmg = 10
+        #health = 20
+        #name = "Orc"
         super().__init__(dmg, health, name)
 
 
-hero = Hero()
-goblin = Goblin()
-orc = Orc()
-hero.rest()
-hero.rest()
-hero.rest()
-print("Goblin attacked")
-goblin.attack(hero)
-print("Hero health: ", hero.health)
-hero.rest()
-print("Orc attacked")
-orc.attack(hero)
-print("Hero health: ", hero.health)
-print("Hero attacked goblin.")
-hero.attack(goblin)
-print("Orc attacked Hero")
-orc.attack(hero)
-print("Hero health: ", hero.health)
-print("Hero attacked Orc thrice")
-hero.attack(orc)
-hero.attack(orc)
-print("Hero is victorious. Final health: ", hero.health)
-hero.rest()
+if __name__ == "__main__":
+    hero = Hero(10, 30, "Hero")
+    goblin = Goblin(5, 10, "Goblins")
+    orc = Orc(10, 20, "Orc")
+    hero.rest()
+    hero.rest()
+    hero.rest()
+    print("Hero health in starting: ", hero.health)
+    print("Goblin attacked")
+    goblin.attack(hero)
+    print("Hero health: ", hero.health)
+    hero.rest()
+    print("Orc attacked")
+    orc.attack(hero)
+    print("Hero health: ", hero.health)
+    print("Hero attacked goblin.")
+    hero.attack(goblin)
+    print("Orc attacked Hero")
+    orc.attack(hero)
+    print("Hero health: ", hero.health)
+    print("Hero attacked Orc thrice")
+    hero.attack(orc)
+    hero.attack(orc)
+    print("Hero is victorious. Final health: ", hero.health)
+    hero.rest()
+
 
 
