@@ -6,14 +6,19 @@ class Character:
         self.name = name
 
     def attack(self, enemy):
-        enemy.health -= self.dmg
-        if enemy.health <= 0:
-            print(enemy.name + " is dead")
+        enemy.takeDmg(self.dmg)
 
     def takeDmg(self, damage):
         self.health -= damage
         if self.health <= 0:
+            self.health = 0
             print(self.name + " is dead")
+
+
+class Monster(Character):
+
+    def __init__(self, dmg, health, name):
+        super().__init__(dmg, health, name)
 
 
 class Hero(Character):
@@ -39,7 +44,7 @@ class Hero(Character):
         print("Final health ", self.health)
 
 
-class Goblin(Character):
+class Goblin(Monster):
 
     def __init__(self, dmg=5, health=10, name="Goblin"):
         #dmg = 5
@@ -48,7 +53,7 @@ class Goblin(Character):
         super().__init__(dmg, health, name)
 
 
-class Orc(Character):
+class Orc(Monster):
 
     def __init__(self, dmg=10, health=20, name="Orc"):
         #dmg = 10
@@ -59,7 +64,7 @@ class Orc(Character):
 
 if __name__ == "__main__":
     hero = Hero(10, 30, "Hero")
-    goblin = Goblin(5, 10, "Goblins")
+    goblin = Goblin(5, 10, "Goblin")
     orc = Orc(10, 20, "Orc")
     hero.rest()
     hero.rest()
@@ -77,7 +82,8 @@ if __name__ == "__main__":
     print("Orc attacked Hero")
     orc.attack(hero)
     print("Hero health: ", hero.health)
-    print("Hero attacked Orc thrice")
+    print("Orc health left: ", orc.health)
+    print("Hero attacked Orc twice")
     hero.attack(orc)
     hero.attack(orc)
     print("Hero is victorious. Final health: ", hero.health)
